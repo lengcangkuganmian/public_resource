@@ -169,6 +169,7 @@ installTrojango(){
   "log_file": "/var/log/trojan-go/trojan-go.log",
   "password": [""],
   "disable_http_check": false,
+  "udp": true,
   "udp_timeout": 60,
   "ssl": {
     "verify": true,
@@ -293,7 +294,7 @@ EOF
 
 installXray(){
 	cd /usr/local/xray
-	wget https://github.com/XTLS/Xray-core/releases/download/v1.8.4/Xray-linux-32.zip
+	wget https://github.com/XTLS/Xray-core/releases/download/v1.8.9/Xray-linux-64.zip
 	unzip Xray-linux-32.zip
 	rm -f Xray-linux-32.zip
 	ln -s /usr/local/xray/xray /usr/local/bin/xray
@@ -374,7 +375,6 @@ EOF
     ]
 }
 EOF
-	cp /usr/local/xray/config-vless-xtls.json.template /usr/local/xray/config.json
 	cat > /etc/logrotate.d/xray << EOF
 # Xray logs
 /var/log/xray/*.log {
